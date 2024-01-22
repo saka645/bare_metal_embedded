@@ -1,0 +1,27 @@
+/*
+ * adc.c
+ *
+ *  Created on: Jan 22, 2024
+ *      Author: sanjay.kumar
+ */
+
+#include <stm32f0xx.h>
+
+#define ADC1_EN			(1U<<9)
+#define GPIOA_EN		(1U<<16)
+
+
+void pa1_adc_init(void)
+{
+	/* configure adc gpio pin */
+
+	/* enable clock access to gpioa */
+
+	/* set pa1 mode to analog */
+
+	/*configure adc module */
+
+	/* enable clock access to adc */
+
+	/* configure adc parameters */
+}
