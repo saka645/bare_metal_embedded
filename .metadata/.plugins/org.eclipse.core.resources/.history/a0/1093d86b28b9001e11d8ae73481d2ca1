@@ -1,0 +1,9 @@
+/*
+ * adc.c
+ *
+ *  Created on: Jan 22, 2024
+ *      Author: sanjay.kumar
+ */
+
+
+#define ADC1_EN			(1U<<9)
