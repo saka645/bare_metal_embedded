@@ -1,0 +1,19 @@
+/*
+ * tim.c
+ *
+ *  Created on: Jan 24, 2024
+ *      Author: sanjay.kumar
+ */
+
+#include <stm32f0xx.h>
+
+void timer6_init1Hz()
+{
+	/*enable clock access to timer6/*	 */
+
+	/*set prescalar value*/
+
+	/*set auto reload value*/
+
+	/*enable timer*/
+}
