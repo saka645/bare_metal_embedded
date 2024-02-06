@@ -7,7 +7,7 @@
 
 #include <stm32f0xx.h>
 
-#define SYSTICK_LOAD_VAL		48000U
+#define SYSTICK_LOAD_VAL		8000U
 #define CTRL_ENABLE				(1U<<0)
 #define CTRL_CLKSRC				(1U<<2)
 #define CTRL_COUNTFLAG			(1U<<16)

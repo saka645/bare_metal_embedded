@@ -33,34 +33,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := 05_uart_tx
+BUILD_ARTIFACT_NAME := 05_uart1_tx
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-05_uart_tx.elf \
+05_uart1_tx.elf \
 
 MAP_FILES += \
-05_uart_tx.map \
+05_uart1_tx.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-05_uart_tx.list \
+05_uart1_tx.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: 05_uart_tx.elf secondary-outputs
+main-build: 05_uart1_tx.elf secondary-outputs
 
 # Tool invocations
-05_uart_tx.elf 05_uart_tx.map: $(OBJS) $(USER_OBJS) D:\bare_metal\workspace\05_uart_tx\STM32F030R8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "05_uart_tx.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"D:\bare_metal\workspace\05_uart_tx\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="05_uart_tx.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+05_uart1_tx.elf 05_uart1_tx.map: $(OBJS) $(USER_OBJS) D:\bare_metal\workspace\05_uart1_tx\STM32F030R8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "05_uart1_tx.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"D:\bare_metal\workspace\05_uart1_tx\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="05_uart1_tx.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -69,14 +69,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-05_uart_tx.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "05_uart_tx.list"
+05_uart1_tx.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "05_uart1_tx.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) 05_uart_tx.elf 05_uart_tx.list 05_uart_tx.map default.size.stdout
+	-$(RM) 05_uart1_tx.elf 05_uart1_tx.list 05_uart1_tx.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

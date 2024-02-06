@@ -4,7 +4,7 @@
 
 #define UART2EN			(1U<<17)
 #define GPIOAEN			(1U<<17)
-#define SYS_FREQ		48000000U//16000000
+#define SYS_FREQ		8000000U//16000000
 #define APB1_CLK		SYS_FREQ
 #define UART_BAUDRATE	9600U
 #define CR1_TE			(1U<<3)
@@ -27,7 +27,7 @@ int __io_putchar(int ch)
 	uart2_write(ch);
 	return ch;
 }
-
+int count=0;
 int main()
 {
 	RCC->AHBENR |= GPIOCEN;
@@ -40,7 +40,8 @@ int main()
 		while(!(TIM6->SR & UIF));
 		TIM6->SR &= ~UIF;
 		GPIOC->ODR ^= LED_PIN;
-		printf("1 sec elapsed\n");
+		count++;
+		printf("count=%d\n",count);
 	}
 }
 

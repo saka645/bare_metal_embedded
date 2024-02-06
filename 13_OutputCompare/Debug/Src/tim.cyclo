@@ -1,2 +1,2 @@
 ../Src/tim.c:18:6:timer6_init1Hz	1
-../Src/tim.c:32:6:timer16_OutputCompare	1
+../Src/tim.c:32:6:timer3_ch3_OutputCompare	1

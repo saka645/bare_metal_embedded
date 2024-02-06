@@ -15,7 +15,7 @@ void timer6_init1Hz()
 	/*enable clock access to timer6/*	 */
 	RCC->APB1ENR |= TIMER6_EN;
 	/*set prescalar value*/
-	TIM6->PSC = 4800 -1;
+	TIM6->PSC = 800 -1;
 	/*set auto reload value*/
 	TIM6->ARR = 10000 -1;
 	/*enable timer*/

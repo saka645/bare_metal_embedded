@@ -1,3 +1,4 @@
 1706008820221	Rename resource '05_uart_tx'
 1706008831134	Rename resource '07_uart1_tx'
 1706008854703	Rename resource '06_uart_rx'
+1706258270348	Delete resource 'uart_test'

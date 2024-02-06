@@ -1,0 +1,2 @@
+D:/bare_metal/workspace/chip_headers/CMSIS/Include/core_cm0.h:623:22:__NVIC_EnableIRQ	16	static
+../Src/exti.c:13:6:pb1_exti_init	8	static,ignoring_inline_asm

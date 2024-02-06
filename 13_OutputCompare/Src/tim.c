@@ -7,12 +7,12 @@
 
 #include <stm32f0xx.h>
 
-#define TIMER16_EN			(1U<<17)
+#define TIMER3_EN			(1U<<1)
 #define TIMER6_EN			(1U<<4)
 #define CR1_CEN				(1U<<0)
 #define OCTOGGLE			((1U<<4) | (1U<<5))
-#define CC1E				(1U<<0)
-#define RCC_GPIOBEN			(1U<<18)
+#define CC3E				(1U<<8)
+#define RCC_GPIOCEN			(1U<<19)
 
 
 void timer6_init1Hz()
@@ -20,7 +20,7 @@ void timer6_init1Hz()
 	/*enable clock access to timer6*/
 	RCC->APB1ENR |= TIMER6_EN;
 	/*set prescalar value*/
-	TIM6->PSC = 4800 -1;
+	TIM6->PSC = 800 -1;
 	/*set auto reload value*/
 	TIM6->ARR = 10000 -1;
 	/*enable timer*/
@@ -29,33 +29,33 @@ void timer6_init1Hz()
 }
 
 
-void timer16_OutputCompare()
+void timer3_ch3_OutputCompare()
 {
 
-	RCC->AHBENR |= RCC_GPIOBEN;
-	/*gpio b8 as alternate function mode*/
-	GPIOB->MODER &= ~(1U<<16);
-	GPIOB->MODER |= (1U<<17);
-	/*Set pb8 to alternate function 2 mode*/
-	GPIOB->AFR[1] &= ~(1U<<0);
-	GPIOB->AFR[1] |= (1U<<1);
-	GPIOB->AFR[1] &= ~(1U<<2);
-	GPIOB->AFR[1] &= ~(1U<<3);
+	RCC->AHBENR |= RCC_GPIOCEN;
+	/*gpio C8 as alternate function mode*/
+	GPIOC->MODER &= ~(1U<<16);
+	GPIOC->MODER |= (1U<<17);
+	/*Set C8 to alternate function 2 mode*/
+	GPIOC->AFR[1] &= ~(1U<<0);
+	GPIOC->AFR[1] &= ~(1U<<1);
+	GPIOC->AFR[1] &= ~(1U<<2);
+	GPIOC->AFR[1] &= ~(1U<<3);
 	/*enable clock access to timer16 */
-	RCC->APB2ENR |= TIMER16_EN;
+	RCC->APB1ENR |= TIMER3_EN;
 	/*set prescalar value*/
-	TIM16->PSC = 4800 -1;
+	TIM3->PSC = 800 -1;
 	/*set auto reload value*/
-	TIM16->ARR = 10000 -1;
+	TIM3->ARR = 10000 -1;
 
 	/*set output compare toggle mode*/
-	TIM16->CCMR1 |= OCTOGGLE;
-	/*enable timer3 compare mode channel6 PB8 */
-	TIM16->CCER |= CC1E;
+	TIM3->CCMR2 |= OCTOGGLE;
+	/*enable timer3 compare mode channel3  */
+	TIM3->CCER |= CC3E;
 
 
 
 	/*enable timer*/
-	TIM16->CNT = 0;
-	TIM16->CR1 |= CR1_CEN;
+	TIM3->CNT = 0;
+	TIM3->CR1 |= CR1_CEN;
 }

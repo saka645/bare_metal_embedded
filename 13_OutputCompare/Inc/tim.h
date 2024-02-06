@@ -10,5 +10,5 @@
 
 #define UIF		(1U<<0)
 void timer6_init1Hz();
-void timer3_OutputCompare();
+void timer3_ch3_OutputCompare();
 #endif /* TIM_H_ */

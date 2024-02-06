@@ -1,2 +1,2 @@
 ../Src/tim.c:18:6:timer6_init1Hz	8	static
-../Src/tim.c:32:6:timer16_OutputCompare	8	static
+../Src/tim.c:32:6:timer3_ch3_OutputCompare	8	static

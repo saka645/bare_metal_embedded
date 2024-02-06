@@ -4,7 +4,7 @@
 
 #define UART2EN			(1U<<17)
 #define GPIOAEN			(1U<<17)
-#define SYS_FREQ		48000000U//16000000
+#define SYS_FREQ		88000000U//16000000
 #define APB1_CLK		SYS_FREQ
 #define UART_BAUDRATE	9600U
 #define CR1_TE			(1U<<3)
@@ -27,7 +27,7 @@ int __io_putchar(int ch)
 int main()
 {
 	uart2_tx_init();
-	pa1_adc_init();
+	pa0_adc_init();
 	start_conversion();
 	while(1)
 	{
