@@ -1,0 +1,5 @@
+D:/bare_metal/workspace/chip_headers/CMSIS/Include/core_cm0.h:623:22:__NVIC_EnableIRQ	16	static
+../Src/adc.c:20:6:pa0_adc_interrupt_init	8	static
+../Src/adc.c:53:6:pa0_adc_init	8	static
+../Src/adc.c:84:6:start_conversion	8	static
+../Src/adc.c:91:10:adc_read	8	static
