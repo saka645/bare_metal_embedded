@@ -2,13 +2,22 @@
 #include <stdio.h>
 #include <uart1.h>
 
+#define GPIOCEN		(1<<19)
+#define PIN9		(1<<9)
+#define LED_PIN		PIN9
+
 static void uart_callback();
 
 char read_char=0;
 int main()
 {
-	uart1_rx_interrupt_init();
-	printf("hello please enter A\n");
+	char msg[30]="hello please enter A\n";
+	RCC->AHBENR |= GPIOCEN;
+	GPIOC->MODER |= (1<<18);
+	GPIOC->MODER &= ~(1<<19);
+	uart1_tx_init();
+	dma_init((uint32_t)msg,(uint32_t)&USART1->TDR,30);
+	//printf("hello please enter A\n");
 	while(1)
 	{
 		//read_char = uart1_read();
@@ -17,15 +26,13 @@ int main()
 }
 static void uart_callback()
 {
-	read_char = USART1->RDR;
-	if(read_char=='A')
-		printf("you pressed A\n");
+	GPIOC->ODR ^= LED_PIN;
 }
-void USART1_IRQHandler(void)
+void DMA1_CH2_3_IRQHandler(void)
 {
-	//check interrupt flag
-	if(USART1->ISR & SR_RXNE)
+	if(DMA1->ISR & DMA_TCIF2)
 	{
+		DMA1->ISR |= DMA_HTIF2;
 		uart_callback();
 	}
 }

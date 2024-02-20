@@ -28,6 +28,10 @@
 #define DMA_CH_2_SEL	(1U<<5)
 #define DMA_CH_2_MINC	(1U<<7)
 #define DMA_CH_DIR		(1U<<4)
+#define DMA_TCIE		(1U<<1)
+#define UART_CR_DMA		(1U<<7)
+
+
 
 int __io_putchar(int ch)
 {
@@ -132,31 +136,36 @@ char uart1_read(void)
 void dma_init(uint32_t src, uint32_t dest, uint32_t len)
 {
 	/*enable clock access to dma */
-	RCC->AHBENR |= DMA_EN;
+	RCC->AHBENR |= DMA_EN;//
 	/*disable dma */
-	DMA1_Channel2->CCR &= ~DMA_CH_CONFIG;
+//	DMA1_Channel2->CCR &= ~DMA_CH_CONFIG;
+//	//WAIT TILL NOT DISABLED//
+//	while(DMA1_Channel2->CCR & DMA_CH_CONFIG);
 	/*clear all interrupt flags of dms*/
 	DMA1->IFCR |= (1U<<4);
 	DMA1->IFCR |= (1U<<5);
 	DMA1->IFCR |= (1U<<6);
 	DMA1->IFCR |= (1U<<7);
 	/*set destination buffer*/
-	DMA1_Channel2->CPAR = dest;
+	DMA1_Channel2->CPAR = dest;//
 	/*set source buffer*/
-	DMA1_Channel2->CMAR = src;
+	DMA1_Channel2->CMAR = src;//
 	/*set length*/
-	DMA1_Channel2->CNDTR = len;
+	DMA1_Channel2->CNDTR = len;//
 	/*select channel of dma*/
-	DMA1_Channel2->CNDTR = DMA_CH_2_SEL;
+	//DMA1_Channel2->CNDTR = DMA_CH_2_SEL;
 	/*enable memory increment*/
-	DMA1_Channel2->CCR |= DMA_CH_2_MINC;
+	DMA1_Channel2->CCR |= DMA_CH_2_MINC;//
 	/*configre transfer directior-mem(array) to peripheral(uart)*/
 	DMA1_Channel2->CCR |= DMA_CH_DIR;
 	/*ENABLE transfer complete interrupt*/
+	DMA1_Channel2->CCR |= DMA_TCIE;//
 	/*disable fifo mode*/
 	/*enable direct mode*/
 	/*enable dma*/
+	DMA1_Channel2->CCR |= DMA_EN;
 	/*enable uart1 transmit dma*/
+	USART1->CR3 |= UART_CR_DMA;//
 	/*enable dma interrupt in nvic*/
-
+	NVIC_EnableIRQ(DMA1_Ch1_IRQn);
 }
