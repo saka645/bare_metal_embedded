@@ -1,0 +1,9 @@
+D:/bare_metal/workspace/chip_headers/CMSIS/Include/core_cm0.h:623:22:__NVIC_EnableIRQ	16	static
+../Src/uart1.c:36:5:__io_putchar	16	static
+../Src/uart1.c:42:6:uart1_rx_interrupt_init	8	static
+../Src/uart1.c:79:6:uart1_tx_init	8	static
+../Src/uart1.c:110:6:set_baudrate	24	static
+../Src/uart1.c:115:10:compute_uart_div	16	static
+../Src/uart1.c:120:6:uart1_write	16	static
+../Src/uart1.c:130:6:uart1_read	8	static
+../Src/uart1.c:136:6:dma_init	24	static

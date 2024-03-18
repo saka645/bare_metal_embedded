@@ -1,5 +1,5 @@
 
-01_led_toggle_addr.elf:     file format elf32-littlearm
+00_led_toggle_addr.elf:     file format elf32-littlearm
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn

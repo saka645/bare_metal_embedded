@@ -33,34 +33,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := 02_gpio_output_bsrr
+BUILD_ARTIFACT_NAME := 03_gpio_output_bsrr
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-02_gpio_output_bsrr.elf \
+03_gpio_output_bsrr.elf \
 
 MAP_FILES += \
-02_gpio_output_bsrr.map \
+03_gpio_output_bsrr.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-02_gpio_output_bsrr.list \
+03_gpio_output_bsrr.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: 02_gpio_output_bsrr.elf secondary-outputs
+main-build: 03_gpio_output_bsrr.elf secondary-outputs
 
 # Tool invocations
-02_gpio_output_bsrr.elf 02_gpio_output_bsrr.map: $(OBJS) $(USER_OBJS) D:\bare_metal\workspace\02_gpio_output_bsrr\STM32F030R8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "02_gpio_output_bsrr.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"D:\bare_metal\workspace\02_gpio_output_bsrr\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="02_gpio_output_bsrr.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+03_gpio_output_bsrr.elf 03_gpio_output_bsrr.map: $(OBJS) $(USER_OBJS) D:\bare_metal\workspace\03_gpio_output_bsrr\STM32F030R8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "03_gpio_output_bsrr.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"D:\bare_metal\workspace\03_gpio_output_bsrr\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="03_gpio_output_bsrr.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -69,14 +69,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-02_gpio_output_bsrr.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "02_gpio_output_bsrr.list"
+03_gpio_output_bsrr.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "03_gpio_output_bsrr.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) 02_gpio_output_bsrr.elf 02_gpio_output_bsrr.list 02_gpio_output_bsrr.map default.size.stdout
+	-$(RM) 03_gpio_output_bsrr.elf 03_gpio_output_bsrr.list 03_gpio_output_bsrr.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

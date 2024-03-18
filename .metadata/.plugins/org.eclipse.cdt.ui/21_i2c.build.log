@@ -1,4 +1,4 @@
-13:21:35 **** Incremental Build of configuration Debug for project 21_i2c ****
+11:49:07 **** Incremental Build of configuration Debug for project 21_i2c ****
 make -j8 all 
 arm-none-eabi-gcc "../Src/i2c.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030R8Tx -DSTM32 -DSTM32F0 -DSTM32F0308_DISCO -DSTM32F030x8 -c -I../Inc -I"D:/bare_metal/workspace/chip_headers/CMSIS/Device/ST/STM32F0xx/Include" -I"D:/bare_metal/workspace/chip_headers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/i2c.d" -MT"Src/i2c.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/i2c.o"
 ../Src/i2c.c:19: warning: "I2C_CR2_START" redefined
@@ -29,6 +29,14 @@ D:/bare_metal/workspace/chip_headers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030
 ../Src/i2c.c:59:22: warning: unused variable 'temp' [-Wunused-variable]
    59 |         volatile int temp;
       |                      ^~~~
+../Src/i2c.c: In function 'i2c1_brustRead':
+../Src/i2c.c:97:22: warning: unused variable 'temp' [-Wunused-variable]
+   97 |         volatile int temp;
+      |                      ^~~~
+../Src/i2c.c: In function 'i2c1_brustWrite':
+../Src/i2c.c:151:22: warning: unused variable 'temp' [-Wunused-variable]
+  151 |         volatile int temp;
+      |                      ^~~~
 arm-none-eabi-gcc -o "21_i2c.elf" @"objects.list"   -mcpu=cortex-m0 -T"D:\bare_metal\workspace\21_i2c\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="21_i2c.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: 21_i2c.elf
  
@@ -41,5 +49,5 @@ Finished building: default.size.stdout
 Finished building: 21_i2c.list
  
 
-13:21:35 Build Finished. 0 errors, 4 warnings. (took 467ms)
+11:49:08 Build Finished. 0 errors, 6 warnings. (took 513ms)
 

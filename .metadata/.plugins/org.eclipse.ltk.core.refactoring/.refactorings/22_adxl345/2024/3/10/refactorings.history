@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;22_adxl345/Src/adxl345.h&apos; to &apos;adxl345.c&apos;" description="Rename resource &apos;adxl345.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Src/adxl345.h" name="adxl345.c" stamp="1709533938542" updateReferences="true"/>
+</session>

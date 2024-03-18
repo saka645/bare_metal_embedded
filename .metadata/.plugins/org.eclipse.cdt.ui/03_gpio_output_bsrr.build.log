@@ -1,0 +1,16 @@
+11:14:28 **** Build of configuration Debug for project 03_gpio_output_bsrr ****
+make -j8 all 
+arm-none-eabi-gcc -o "03_gpio_output_bsrr.elf" @"objects.list"   -mcpu=cortex-m0 -T"D:\bare_metal\workspace\03_gpio_output_bsrr\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="03_gpio_output_bsrr.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 03_gpio_output_bsrr.elf
+ 
+arm-none-eabi-size   03_gpio_output_bsrr.elf 
+arm-none-eabi-objdump -h -S  03_gpio_output_bsrr.elf  > "03_gpio_output_bsrr.list"
+   text	   data	    bss	    dec	    hex	filename
+    576	      8	   1568	   2152	    868	03_gpio_output_bsrr.elf
+Finished building: default.size.stdout
+ 
+Finished building: 03_gpio_output_bsrr.list
+ 
+
+11:14:28 Build Finished. 0 errors, 0 warnings. (took 307ms)
+

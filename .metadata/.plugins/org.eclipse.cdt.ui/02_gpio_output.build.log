@@ -1,0 +1,16 @@
+11:14:27 **** Build of configuration Debug for project 02_gpio_output ****
+make -j8 all 
+arm-none-eabi-gcc -o "02_gpio_output.elf" @"objects.list"   -mcpu=cortex-m0 -T"D:\bare_metal\workspace\gpio_output\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="02_gpio_output.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 02_gpio_output.elf
+ 
+arm-none-eabi-size   02_gpio_output.elf 
+arm-none-eabi-objdump -h -S  02_gpio_output.elf  > "02_gpio_output.list"
+   text	   data	    bss	    dec	    hex	filename
+    544	      8	   1568	   2120	    848	02_gpio_output.elf
+Finished building: default.size.stdout
+ 
+Finished building: 02_gpio_output.list
+ 
+
+11:14:27 Build Finished. 0 errors, 0 warnings. (took 367ms)
+
